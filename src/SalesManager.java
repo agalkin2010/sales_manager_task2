@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class SalesManager {
 
     protected int[] sales;
@@ -15,6 +18,18 @@ public class SalesManager {
         }
 
         return max;
+    }
+
+    public int cutAvg() {
+        int cutAvg = -1;
+
+        int[] newArray = IntStream.of(sales)
+                .filter(x -> x != IntStream.of(sales).max().getAsInt() &&
+                        x != IntStream.of(sales).min().getAsInt()).toArray();
+
+        cutAvg = (int) Math.round(Arrays.stream(newArray).average().getAsDouble());
+
+        return cutAvg;
     }
 
 }
