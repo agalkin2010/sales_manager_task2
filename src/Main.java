@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        int[] salesArray = {5, 7, 15, 3};
+        long[] salesArray = {5L, 7L, 15L, 3L};
 
         SalesManager salesManager = new SalesManager(salesArray);
 
