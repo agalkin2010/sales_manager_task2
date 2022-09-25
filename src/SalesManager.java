@@ -34,12 +34,24 @@ public class SalesManager {
         long k = 0;
         long maxSale = max();
         long minSale = min();
+        boolean minFirst = false;
+        boolean maxFirst = false;
 
         for (long sale : sales) {
-            if (sale != maxSale && sale != minSale) {
-                sum += sale;
-                k++;
+
+            if (sale == maxSale && !maxFirst) {
+                maxFirst = true;
+                continue;
             }
+
+            if (sale == minSale && !minFirst) {
+                minFirst = true;
+                continue;
+            }
+
+            sum += sale;
+            k++;
+
         }
 
         return (k > 0) ? sum / k : -1;
