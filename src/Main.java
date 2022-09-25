@@ -4,9 +4,9 @@ public class Main {
         int[] salesArray = {5, 15, 3, 7};
 
         SalesManager salesManager = new SalesManager(salesArray);
-        
-        System.out.println(salesManager.cutAvg());
+
         System.out.println(salesManager.max());
+        System.out.println(salesManager.cutAvg());
 
     }
 }

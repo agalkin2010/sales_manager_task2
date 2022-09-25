@@ -1,8 +1,5 @@
-import java.util.Arrays;
-import java.util.stream.IntStream;
 
 public class SalesManager {
-
     protected int[] sales;
 
     public SalesManager(int[] sales) {
@@ -20,16 +17,32 @@ public class SalesManager {
         return max;
     }
 
+    public int min() {
+        int min = sales[0];
+        for (int sale : sales) {
+            if (sale < min) {
+                min = sale;
+            }
+        }
+
+        return min;
+    }
+
     public int cutAvg() {
-        int cutAvg = -1;
 
-        int[] newArray = IntStream.of(sales)
-                .filter(x -> x != IntStream.of(sales).max().getAsInt() &&
-                        x != IntStream.of(sales).min().getAsInt()).toArray();
+        int sum = 0;
+        int k = 0;
+        int maxSale = max();
+        int minSale = min();
 
-        cutAvg = (int) Math.round(Arrays.stream(newArray).average().getAsDouble());
+        for (int sale : sales) {
+            if (sale != maxSale && sale != minSale) {
+                sum += sale;
+                k++;
+            }
+        }
 
-        return cutAvg;
+        return (k > 0) ? sum / k : -1;
     }
 
 }
